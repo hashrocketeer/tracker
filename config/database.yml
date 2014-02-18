@@ -1,0 +1,16 @@
+global: &global
+  adapter: postgresql
+  min_messages: warning
+  encoding: unicode
+  host: localhost
+
+development:
+  database: tracker_development
+  <<: *global
+
+test: &test
+  database: tracker_test
+  <<: *global
+
+cucumber:
+  <<: *test

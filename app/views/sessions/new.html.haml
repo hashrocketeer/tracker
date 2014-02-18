@@ -1,0 +1,16 @@
+%h1 Sign In
+
+- if flash[:alert].present?
+  .flash(class="alert")
+    %p= flash[:alert]
+
+= form_tag :sessions, id: "session", class: "sign_in" do
+  #main
+    %fieldset
+      %dl
+        %dt= label_tag :email, "Email Address"
+        %dd= email_field_tag :email, params[:email], autofocus: true
+        %dt= label_tag :password
+        %dd= password_field_tag :password, nil
+    %fieldset.actions
+      = submit_tag 'Sign In'
