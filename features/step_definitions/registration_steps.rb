@@ -1,4 +1,4 @@
-When(/^I submit the registration details$/) do
+When "I submit the registration details" do
   within("//*[@id='new_user']") do
     fill_in 'Company', with: "Planet Express"
 
@@ -13,7 +13,7 @@ When(/^I submit the registration details$/) do
   end
 end
 
-When(/^I submit a duplicate email for registration$/) do
+When "I submit a duplicate email for registration" do
   within("//*[@id='new_user']") do
     fill_in 'Email Address', with: "awong@example.com"
     fill_in 'Password', with: "password"
