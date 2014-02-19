@@ -12,3 +12,8 @@ end
 When "I submit invalid credentials" do
   sign_in("a_wrong@example.com", "password")
 end
+
+When "I am signed in" do
+  click_link "Sign In"
+  step "I submit valid credentials"
+end

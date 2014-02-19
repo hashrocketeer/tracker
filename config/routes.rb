@@ -1,5 +1,6 @@
 Tracker::Application.routes.draw do
   get 'sign_in' => 'sessions#new'
+  delete 'sign_out' => 'sessions#destroy'
 
   resource :sessions, only: :create
 
