@@ -1,8 +1,7 @@
-%h1 Sign In
-
-- if flash[:alert].present?
-  .flash(class="alert")
-    %p= flash[:alert]
+= content_for :flash do
+  - flash.keys.each do |key|
+    .flash{ class: key }
+      %p= flash[key.to_sym]
 
 = form_tag :sessions, id: "session", class: "sign_in" do
   #main

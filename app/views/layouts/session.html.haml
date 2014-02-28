@@ -1,0 +1,25 @@
+!!!
+%html(lang="en-US")
+  %head
+    %title MECLABS
+    %meta(charset="UTF-8")
+    %meta(content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport")
+    = stylesheet_link_tag "application"
+    /[if IE]
+      = javascript_include_tag "html5"
+    = javascript_include_tag "application"
+    = yield :head
+    = csrf_meta_tags
+  %body
+    %header
+      .column
+        %h1= link_to "MECLABS", root_path
+
+    #page_head
+      .column
+        = yield :page_head
+
+    = yield :flash
+
+    #content.column_wide
+      = yield

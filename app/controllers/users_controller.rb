@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :html
 
   expose(:company) do
     Company.find_or_create_by(company_params)
@@ -7,9 +8,11 @@ class UsersController < ApplicationController
 
   def create
     if user.update_attributes(company_id: company.id)
-      redirect_to root_path, notice: "Thank you for registering"
+      flash[:success] = "Thank you for registering"
+      sign_in(user)
+      respond_with current_user, location: root_url
     else
-      flash[:error] = "User with that email already exists"
+      flash.now.alert = "User with that email already exists"
       render :new
     end
   end

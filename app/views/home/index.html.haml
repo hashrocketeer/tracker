@@ -1,2 +1,4 @@
-
-%h2 Training Tracker 7
+= content_for :flash do
+  - flash.keys.each do |key|
+    .flash{ class: key }
+      %p= flash[key.to_sym]

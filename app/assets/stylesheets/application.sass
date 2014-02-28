@@ -1,0 +1,584 @@
+@import "mixins"
+
++font-face("Corbert", "Corbert-Regular")
+
+a
+  text-decoration: none
+  color: #52bf43
+  +transition(color 300ms)
+  &:hover
+    color: #60da50
+  &.button
+    +button
+    +transition(background-color 300ms)
+    &.add, &.preview, &.edit
+      padding: 8px 10px
+      &:before
+        display: inline-block
+        width: 15px
+        height: 15px
+        margin: 0 10px 0 0
+        vertical-align: -3px
+        content: ""
+        background: transparent image-url("icon_add.png") 0 0 no-repeat
+    &.edit:before
+      margin-left: -18px
+      height: 18px
+      width: 18px
+      background: transparent image-url("icon_edit.png") 0px 0px no-repeat
+    &:hover
+      background-color: #60da50
+  &.icon_button
+    display: inline-block
+    vertical-align: top
+    width: 24px
+    height: 24px
+    text-align: left
+    text-indent: -8685px
+    overflow: hidden
+    background: #52bf43 image-url("icon_download.png") 50% 50% no-repeat
+    +transition(background-color 300ms)
+    &.edit
+      background: #52bf43 image-url("icon_edit.png") 5px 2px no-repeat
+    &:hover
+      background-color: #60da50
+    &.remove
+      background: #abafb3 image-url("btn_remove.png") 50% 50% no-repeat
+      &:hover
+        background-color: #b12828
+  &.social
+    overflow: hidden
+    display: inline-block
+    width: 24px
+    height: 24px
+    background: #58abd3 image-url("icons_social.png") 0 0 no-repeat
+    text-indent: -3000px
+    &.google
+      background-position: -24px 0
+      background-color: #b12d1b
+    &.facebook
+      background-position: -48px 0
+      background-color: #21699b
+
+form
+  input[type="text"], input[type="password"], input[type="email"], textarea
+    +input
+  input:focus
+    outline: none
+    border-color: #52BF43
+  input:disabled
+    +opacity(.4)
+  textarea
+    height: auto
+  dl
+    clear: both
+    dt
+      padding: 0 0 5px 0
+    dd
+      padding: 0 0 20px 0
+    label
+      font-weight: bold
+    &.partial, &.half
+      float: left
+      clear: none
+      dd
+        padding-right: 20px
+    &.half
+      width: 50%
+      +box-sizing
+  input[type="submit"]
+    +button
+    padding: 7px 20px
+  button
+    cursor: pointer
+    +button
+    +transition(background-color 300ms)
+    &:hover
+      background-color: #60da50
+  label
+    input[type="checkbox"]
+      margin-right: 4px
+    &.checkbox
+      clear: both
+      display: block
+      padding: 0 0 15px 0
+      font-weight: bold
+  fieldset.actions
+    input[type="submit"],
+    button
+      margin: 0 20px 0 0
+    a
+      font: normal 13px "Corbert", sans-serif
+      color: #575757
+    a.preview
+      color: #52BF43
+      margin-right: 20px
+    a.disabled, button:disabled, input:disabled[type="submit"]
+      +opacity(.4)
+      cursor: default
+  .field_with_errors
+    label
+      color: #b12828
+    input[type="text"], input[type="password"], input[type="email"], textarea
+      border-color: #b12828
+      +gradient-bg(#ffffff, #f3e8e8)
+
+form.search
+  fieldset.search_field
+    input[type="text"]
+      width: 153px
+      height: 25px
+      +border-right-radius(0)
+      float: left
+    input[type="submit"]
+      width: 25px
+      height: 25px
+      padding: 0
+      margin-left: 2px
+      text-indent: -8685px
+      cursor: pointer
+      border: none
+      background: #0d314a image-url("icon_search.png") 50% 50% no-repeat
+      float: left
+  fieldset
+    padding: 0 0 20px 0
+    &.filters
+      header
+        overflow: hidden
+        padding: 5px 10px
+        margin: 0 0 2px 0
+        border: 1px solid #e3e5e7
+        border-width: 1px 0
+        h1
+          float: left
+          font: normal 14px "Corbert", sans-serif
+          color: #0d314a
+        a
+          float: right
+          margin: 4px 0 0 0
+          font-size: 11px
+      label
+        display: block
+        padding: 5px 10px
+        font-size: 12px
+        font-weight: bold
+        color: #575757
+        &.checked
+          background: #f3f4f4
+      input[type="checkbox"]
+        margin: 0 5px 0 0
+      .nested_fields
+        padding-left: 25px
+        +opacity(.5)
+        dl
+          padding: 3px 0
+        dt
+          padding: 2px
+        dd
+          padding: 0
+        label
+          padding: 0
+          font-size: 11px
+        input[type="text"]
+          width: 120px
+          &:disabled
+            +opacity(1)
+      li.active .nested_fields
+        +opacity(1)
+      input[type="submit"]
+        +button
+        float: none
+        width: auto
+        height: auto
+        margin: 15px 0 0 0
+        text-indent: 0
+
+.no_content
+  position: relative
+  display: block
+  margin: 30px auto
+  padding: 40px 30px
+  background: #F3F4F4
+  text-align: center
+  font-weight: bold
+  font-size: 13px
+  &:before
+    position: absolute
+    display: block
+    content: ""
+    top: -30px
+    left: 0
+    height: 1px
+    width: 100%
+    margin-bottom: 30px
+    background: #E3E5E7
+
+p.required
+  clear: both
+  float: left
+  padding: 5px 7px
+  margin-bottom: 20px
+  font-size: 12px
+  font-weight: bold
+  color: #b12828
+  color: #0D314A
+  border: 1px solid #E3E5E7
+  span
+    font-size: 16px
+    vertical-align: -5px
+    line-height: 1px
+
+table
+  width: 100%
+  border-spacing: 0
+  border-collapse: collapse
+  thead
+    th
+      padding: 7px 10px
+      font-size: 12px
+      text-align: left
+      color: #abafb3
+      border: 1px solid #e3e5e7
+      border-width: 1px 0
+      &.right
+        text-align: right
+      &.center
+        text-align: center
+      &:after
+        display: none
+        width: 9px
+        height: 6px
+        margin: 0 0 0 5px
+        content: ""
+        background: transparent image-url("icon_table-sort.png") 0 0 no-repeat
+      &.desc,
+      &.asc
+        &:after
+          display: inline-block
+      &.desc:after
+        +rotate(180)
+  .sortable &
+    thead
+      th
+        color: #0d314a
+        cursor: pointer
+        &.unsorted
+          cursor: default
+          color: #abafb3
+  tbody
+    td
+      padding: 7px 10px
+      &.right
+        text-align: right
+        white-space: nowrap
+        a + a
+          margin-left: 10px
+      &.center
+        text-align: center
+      span
+        &.true, &.false
+          display: inline-block
+          padding: 2px 4px
+          border: 2px solid #575757
+        &.true
+          border-color: #52BF43
+          color: #52BF43
+      a.button
+        padding: 3px 7px 0 7px
+        height: 21px
+    tr:nth-of-type(even)
+      td
+        background: #f3f4f4
+  &.highlight
+    strong, p
+      color: #0d314a
+    tr:hover
+      td
+        color: #abafb3
+        background: #0d314a
+        a, strong, p
+          color: #ffffff
+          &.remove
+            background-color: #b12828
+
+.flash
+  color: #ffffff
+  font: normal 16px "Corbert", sans-serif
+  text-align: center
+  padding: 10px 30px
+  margin: 1px 0 0 0
+  p:before
+    content: ""
+    display: inline-block
+    margin-right: 7px
+    width: 30px
+    height: 30px
+    vertical-align: middle
+  &.alert
+    background: #b12828
+    p:before
+      background: transparent image-url("icon_flash.png") 0 0 no-repeat
+  &.success
+    background: #52bf43
+    p:before
+      background: transparent image-url("icon_flash.png") 0 -30px no-repeat
+
+.modal
+  display: none
+  position: absolute
+  z-index: 100
+  width: 520px
+  padding: 0 20px 20px 20px
+  background: #f3f4f4
+  header
+    overflow: hidden
+    padding: 20px
+    margin: 0 -20px 20px -20px
+    border-bottom: 1px solid #e3e5e7
+    background: #ffffff
+    h1
+      float: left
+      font: normal 20px "Corbert", sans-serif
+      color: #0d314a
+    a.close
+      display: inline-block
+      float: right
+      width: 24px
+      height: 24px
+      text-align: left
+      text-indent: -8685px
+      overflow: hidden
+      background: #abafb3 image-url("btn_remove.png") 50% 50% no-repeat
+      +transition(background-color 300ms)
+      &:hover
+        background-color: #b12828
+  p.no_content
+    background-color: #ffffff
+    padding: 30px
+    border: 1px solid #E3E5E7
+    &:before
+      display: none
+
+#modal_layer
+  display: none
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 99
+  +opacity(.8)
+  background: #000000
+#confirm_delete.modal
+  width: 400px
+  padding: 30px
+  background: #ffffff
+  header
+    padding: 0 0 20px 0
+    margin: 0
+    border: none
+    a.close
+      position: absolute
+      right: 10px
+      top: 10px
+      z-index: 1
+  .actions
+    a.button
+      padding: 7px 30px
+      margin: 0 7px 0 0
+      background: #abafb3
+
+body
+  font: normal 13px Helvetica, Arial, sans-serif
+  color: #575757
+  > header
+    background: #0d314a
+    .column
+      position: relative
+    h1
+      padding: 10px 0
+      a
+        display: block
+        width: 146px
+        height: 43px
+        text-indent: -8685px
+        overflow: hidden
+        background: transparent image-url("logo.png") 0 0 no-repeat
+    nav
+      position: absolute
+      left: 200px
+      bottom: -10px
+      z-index: 1
+      li
+        float: left
+        position: relative
+        padding: 0 0 17px 0
+        margin: 0 30px 0 0
+        a
+          font: normal 14px "Corbert", sans-serif
+          color: #58abd3
+        &.active
+          background: transparent image-url("icon_nav-active.png") 50% 100% no-repeat
+          a
+            color: #ffffff
+    .session
+      position: absolute
+      right: 20px
+      top: 10px
+      z-index: 1
+      padding: 2px
+      color: #e3e5e7
+      background: #143b56
+      p
+        padding: 0 10px
+        display: inline-block
+        vertical-align: middle
+        font: normal 11px "Corbert", sans-serif
+      a.button
+        padding: 10px
+        font-size: 11px
+        vertical-align: middle
+        color: #52bf43
+        background: #0d314a
+        +transition(color 300ms)
+        &:hover
+          color: #60da50
+
+.column
+  width: 940px
+  padding: 0 20px
+  margin: 0 auto
+
+#content.column_wide
+  width: 100%
+  padding: 0
+
+nav.tabbed
+  overflow: hidden
+  padding: 0 0 3px 0
+  ul
+    float: left
+    li
+      float: left
+      padding: 0 0 7px 0
+      a
+        +button(transparent)
+        display: block
+        padding: 8px 25px
+        color: #52bf43
+        +transition(color 300ms)
+        &:hover
+          color: #60da50
+      &.active
+        background: transparent image-url("icon_tabbed-active.png") 50% 100% no-repeat
+        a
+          color: #ffffff
+          background: #0d314a
+  .actions
+    float: right
+    padding: 3px 0 0 0
+    a.pages
+      position: relative
+      display: block
+      padding: 5px 0 5px 25px
+      font: normal 13px "Corbert", sans-serif
+      &:before,
+      &:after
+        position: absolute
+        width: 15px
+        height: 20px
+        content: ""
+        background: #ffffff image-url("icon_document.png") 0 0 no-repeat
+      &:before
+        left: 0
+        bottom: 0
+        z-index: 1
+      &:after
+        left: 4px
+        bottom: 4px
+        z-index: 2
+
+#content
+  padding: 30px 20px
+
+#page_head
+  border-top: 1px solid #ffffff
+  border-bottom: 1px solid #ccced1
+  background: transparent image-url("bg_page-head.png") 0 0 repeat-x
+  .column
+    position: relative
+    padding-top: 15px
+  h1
+    padding: 0 0 15px 0
+    font: normal 24px "Corbert", sans-serif
+    color: #0d314a
+  a.button
+    position: absolute
+    top: 30px
+    right: 20px
+  nav
+    margin-bottom: -1px
+    li
+      display: inline-block
+      margin: 0 5px 0 0
+      border: 1px solid #ccced1
+      border-bottom: none
+      a
+        +button(#abafb3)
+        padding: 5px 25px
+        font-size: 14px
+        +transition(background-color 300ms)
+        &:hover
+          background-color: #979b9e
+      &.active
+        a
+          color: #0d314a
+          background: #ffffff
+
+nav.subnav
+  padding: 15px 0
+  border-bottom: 1px solid #ccced1
+  ul
+    @extend .column
+  li
+    display: inline-block
+    padding: 0 25px
+    font: normal 14px "Corbert", sans-serif
+    &.active
+      a
+        color: #0d314a
+
+#ui
+  font-size: 14px
+  li
+    padding-bottom: 10px
+
+#sidebar
+  float: left
+  width: 180px
+  padding: 0 20px 0 0
+  margin-right: -1px
+  border-right: 1px solid #CCCED1
+
+#main
+  overflow: hidden
+  padding: 0 0 0 20px
+  border-left: 1px solid #ccced1
+
+#session
+  background: #f3f4f4
+  padding: 30px 0
+  border-bottom: 1px solid #e3e5e7
+  #main
+    overflow: visible
+    width: 340px
+    border: none
+    padding: 0
+    margin: 0 auto
+    input[type="checkbox"]
+      margin-bottom: 20px
+      font-size: 11px
+  fieldset.actions
+    a
+      float: right
+      font-size: 11px

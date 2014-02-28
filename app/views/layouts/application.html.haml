@@ -1,24 +1,37 @@
 !!!
-%html
+%html(lang="en-US")
   %head
     %title Training Tracker 7
-    = stylesheet_link_tag    "application", :media => "all"
+    %meta(charset="UTF-8")
+    %meta(content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport")
+    = stylesheet_link_tag "application"
+    /[if IE]
+      = javascript_include_tag "html5"
     = javascript_include_tag "application"
+    = yield :head
     = csrf_meta_tags
+    - if Rails.env.test?
+      = javascript_include_tag "test_overrides"
   %body
-    %nav.session
-      - if signed_in?
-        "Welcome, #{current_user.first_name}"
-        = link_to "Sign Out", sign_out_path, method: :delete
-      - else
-        = link_to "Sign In", sign_in_path
-        = link_to "Register", new_user_path
+    %header
+      .column
+        %h1= link_to "Training Tracker 7", root_path
+        .session
+          - if signed_in?
+            %p 
+              Welcome, #{current_user.first_name}
+            = link_to "Sign Out", sign_out_path, class: "button", method: :delete
+          - else
+            = link_to "Sign In", sign_in_path
+            = link_to "Register", new_user_path
+        %nav
+          %ul
+            %li.active= link_to "Home", "#"
+            - if signed_in?
+              - ["People", "Tasks", "Training", "Admin", "Utilities"].each do |nav|
+                %li= link_to nav, "#"
 
-    - if flash[:notice].present?
-      .flash(class="success")
-        %p= flash[:notice]
-    - if flash[:error].present?
-      .flash(class="error")
-        %p= flash[:error]
+    = yield :flash
 
-    = yield
+    #content.column
+      = yield

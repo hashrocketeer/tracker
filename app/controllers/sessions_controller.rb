@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  layout 'session'
 
   expose(:user) { User.find_by_email(params[:email]) }
 

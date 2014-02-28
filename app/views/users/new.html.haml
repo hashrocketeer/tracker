@@ -1,7 +1,10 @@
-%header.page
-  %section
-    %h1
-      Register
+= content_for :flash do
+  - flash.keys.each do |key|
+    .flash{ class: key }
+      %p= flash[key.to_sym]
+
+%h1
+  Register
 
 = form_for user, html: { class: 'registration' } do |f|
   %fieldset

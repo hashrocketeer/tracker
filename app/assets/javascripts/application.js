@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.modal
+//= require jquery.minical
 //= require knockout
 //= require_tree .
