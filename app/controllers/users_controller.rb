@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   expose(:company) do
     Company.find_or_create_by(company_params)
   end
+  expose(:users) do
+    User.where(company_id: company_id)
+  end
   expose(:user, attributes: :user_params)
 
   def create
@@ -25,6 +28,10 @@ class UsersController < ApplicationController
 
   def company_params
     params.require(:user).permit(:company_name)
+  end
+
+  def company_id
+    (current_user || NilUser).company_id
   end
 
 end

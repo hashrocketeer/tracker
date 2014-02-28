@@ -1,0 +1,8 @@
+.sortable(data-results_per_page="25")
+  %table
+    %thead
+      %tr
+        - ["First Name", "Last Name", "Email Address"].each do |th|
+          %th= th
+    %tbody
+      = render partial: 'users/list', collection: users, as: "user"

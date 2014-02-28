@@ -17,3 +17,8 @@ When "I am signed in" do
   click_link "Sign In"
   step "I submit valid credentials"
 end
+
+Given "I am authenticated" do
+  step("I am on the home page")
+  step("I am signed in")
+end
