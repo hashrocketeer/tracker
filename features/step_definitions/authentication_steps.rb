@@ -22,3 +22,12 @@ Given "I am authenticated" do
   step("I am on the home page")
   step("I am signed in")
 end
+
+Given "there is a valid user" do
+  Fabricate(:user) {
+    first_name "Amy"
+    last_name "Wong"
+    email "awong@example.com"
+    company_name "Planet Express"
+   }
+end

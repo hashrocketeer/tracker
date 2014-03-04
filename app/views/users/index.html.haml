@@ -1,8 +1,13 @@
-.sortable(data-results_per_page="25")
-  %table
-    %thead
-      %tr
-        - ["First Name", "Last Name", "Email Address"].each do |th|
-          %th= th
-    %tbody
-      = render partial: 'users/list', collection: users, as: "user"
+%section#content_list
+  #sidebar
+    = link_to "Create New User", new_user_path, class: "button add"
+
+#main
+  .sortable(data-results_per_page="25")
+    %table
+      %thead
+        %tr
+          - ["First Name", "Last Name", "Email Address"].each do |th|
+            %th= th
+      %tbody
+        = render partial: 'users/list', collection: users, as: "user"

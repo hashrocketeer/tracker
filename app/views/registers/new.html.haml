@@ -1,0 +1,14 @@
+= render 'shared/flash_message'
+
+%h1
+  Register
+
+= form_for user, url: register_path, html: { class: 'registration' } do |f|
+  %fieldset
+    %dl
+      %dt= f.label :company_name, 'Company'
+      %dd= f.text_field :company_name
+  = render 'shared/user_form', f: f
+  %fieldset.actions
+    = f.submit "Register"
+    = link_to "Go Back", root_path

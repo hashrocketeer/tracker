@@ -1,0 +1,21 @@
+%fieldset
+  %header
+    %h1 Personal Information
+  %dl.half
+    %dt= f.label :first_name, 'First'
+    %dd= f.text_field :first_name
+  %dl.half
+    %dt= f.label :last_name, 'Last'
+    %dd= f.text_field :last_name
+%fieldset
+  %header
+    %h1 Account Information
+  %dl.half
+    %dt= f.label :email, 'Email Address'
+    %dd= f.email_field :email
+  %dl.half.clear
+    %dt= f.label :password
+    %dd= f.password_field :password
+  %dl.half
+    %dt= f.label :password_confirmation, 'Confirm Password'
+    %dd= f.password_field :password_confirmation

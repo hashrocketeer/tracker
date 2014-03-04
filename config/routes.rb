@@ -4,6 +4,7 @@ Tracker::Application.routes.draw do
 
   resource :sessions, only: :create
 
+  resource :register, only: [ :new, :create ]
   resources :users
   resources :trainees, only: :index
 
