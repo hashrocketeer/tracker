@@ -11,6 +11,7 @@ Tracker::Application.routes.draw do
   scope 'utilities' do
     resources :departments, only: [ :index, :create, :update ]
     resources :job_titles, only: [ :index, :create, :update ]
+    resources :categories, only: [ :index, :create, :update ]
   end
 
   namespace :api do

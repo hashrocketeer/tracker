@@ -1,0 +1,5 @@
+class Category < ActiveRecord::Base
+  belongs_to :company
+
+  validates_presence_of :category_name
+end

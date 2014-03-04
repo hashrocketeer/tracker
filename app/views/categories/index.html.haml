@@ -1,0 +1,19 @@
+= content_for :page_head do
+  = render 'shared/utilities_nav'
+
+= render 'shared/flash_message'
+
+%section.metadata#departments
+  .new_content
+
+  .sortable(data-results_per_page="25")
+    %table
+      %thead
+        %tr
+          %th Categories
+          %th.unsorted
+      %tbody
+        - categories.each do |category|
+          %tr(data-id="#{category.id}")
+            %td
+              %strong= category.category_name
