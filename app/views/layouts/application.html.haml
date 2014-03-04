@@ -26,12 +26,16 @@
             = link_to "Register", new_register_path
         %nav
           %ul
-            %li.active= link_to "Home", "#"
+            %li{ class: active_home }= link_to "Home", root_path
             - if signed_in?
               - ["People", "Tasks", "Training"].each do |nav|
                 %li= link_to nav, "#"
-              %li= link_to "Utilities", departments_path
-              %li= link_to "Admin", users_path
+              %li{ class: active_if("utilities") }= link_to "Utilities", departments_path
+              %li{ class: active_if("users") }= link_to "Admin", users_path
+
+    #page_head
+      .column
+        = yield :page_head
 
     = yield :flash
 
