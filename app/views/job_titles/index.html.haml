@@ -1,0 +1,19 @@
+= content_for :page_head do
+  = render 'shared/utilities_nav'
+
+= render 'shared/flash_message'
+
+%section.metadata#departments
+  .new_content
+
+  .sortable(data-results_per_page="25")
+    %table
+      %thead
+        %tr
+          %th Job Titles
+          %th.unsorted
+      %tbody
+        - job_titles.each do |job_title|
+          %tr(data-id="#{job_title.id}")
+            %td
+              %strong= job_title.job_title_name
