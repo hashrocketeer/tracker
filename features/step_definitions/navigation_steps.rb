@@ -1,10 +1,6 @@
-Given "I am on the home page" do
+Given /^I am on the (.*) page$/ do |page_text|
   visit "/"
-end
-
-Given "I am on the admin page" do
-  step "I am on the home page"
-  click_link "Admin"
+  click_link page_text.capitalize unless page_text == "home"
 end
 
 Given "I am on the new trainee page" do

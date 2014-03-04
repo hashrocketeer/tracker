@@ -28,8 +28,9 @@
           %ul
             %li.active= link_to "Home", "#"
             - if signed_in?
-              - ["People", "Tasks", "Training", "Utilities"].each do |nav|
+              - ["People", "Tasks", "Training"].each do |nav|
                 %li= link_to nav, "#"
+              %li= link_to "Utilities", departments_path
               %li= link_to "Admin", users_path
 
     = yield :flash

@@ -8,6 +8,10 @@ Tracker::Application.routes.draw do
   resources :users
   resources :trainees, only: :index
 
+  scope 'utilities' do
+    resources :departments, only: [ :index, :create, :update ]
+  end
+
   namespace :api do
     namespace :v1 do
       resources :trainees, only: :index

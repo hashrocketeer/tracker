@@ -1,0 +1,21 @@
+%h1 Utilities
+%nav
+  %ul
+    %li{ class: "active" }= link_to "Departments", departments_path
+
+= render 'shared/flash_message'
+
+%section.metadata#authors
+  .new_content
+
+  .sortable(data-results_per_page="25")
+    %table
+      %thead
+        %tr
+          %th Department Name
+          %th.unsorted
+      %tbody
+        - departments.each do |department|
+          %tr(data-id="#{department.id}")
+            %td
+              %strong= department.department_name
