@@ -1,8 +1,5 @@
 = content_for :page_head do
-  %h1 Utilities
-  %nav
-    %ul
-      %li{ class: "active" }= link_to "Departments", departments_path
+  = render 'shared/utilities_nav'
 
 = render 'shared/flash_message'
 
