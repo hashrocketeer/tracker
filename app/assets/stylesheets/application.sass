@@ -582,3 +582,85 @@ nav.subnav
     a
       float: right
       font-size: 11px
+
+.metadata
+  form
+    padding: 15px
+    margin-bottom: 20px
+    background: #f3f4f4
+    fieldset
+      display: inline-block
+      vertical-align: middle
+    h1
+      display: inline-block
+      padding: 0 20px 0 0
+      vertical-align: 1px
+      font: normal 14px "Corbert"
+    p
+      display: inline-block
+      padding: 0 10px 0 0
+    input[type="submit"]
+      display: inline-block
+      padding: 6px 15px
+      cursor: pointer
+      &:hover
+        background: lighten(#52bf43, 10%)
+        +transition(background, 500ms)
+  table
+    thead
+      th
+        padding-left: 35px
+        + th
+          padding-left: 10px
+    tbody
+      td
+        padding-left: 35px
+        + td
+          padding-left: 10px
+        a
+          font-weight: bold
+          color: #0d314a
+          +transition(none)
+          &.remove
+            +transition(background 200ms)
+      tr:hover
+        td
+          color: #abafb3
+          background: #0d314a
+          a
+            color: #ffffff
+
+#departments
+  div.actions
+    margin-bottom: 20px
+    text-align: right
+  form
+    input[type="text"]
+      width: 160px
+  table
+    tbody
+      td
+        padding-left: 10px
+        &:before
+          display: inline-block
+          width: 15px
+          height: 20px
+          margin: 0 5px 0 0
+          vertical-align: -5px
+          content: ""
+          background: transparent image-url("icon_author.png") 0 0 no-repeat
+        + td
+          &:before
+            display: none
+        strong
+          color: #0d314a
+        &.social
+          width: 80px
+        a.social + a.social
+          margin-left: 5px
+      tr:hover
+        td
+          strong
+            color: #ffffff
+          &:before
+            background-position: 0 100%

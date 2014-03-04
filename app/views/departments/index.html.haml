@@ -1,11 +1,12 @@
-%h1 Utilities
-%nav
-  %ul
-    %li{ class: "active" }= link_to "Departments", departments_path
+= content_for :page_head do
+  %h1 Utilities
+  %nav
+    %ul
+      %li{ class: "active" }= link_to "Departments", departments_path
 
 = render 'shared/flash_message'
 
-%section.metadata#authors
+%section.metadata#departments
   .new_content
 
   .sortable(data-results_per_page="25")
