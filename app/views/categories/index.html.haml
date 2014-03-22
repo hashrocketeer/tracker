@@ -3,8 +3,16 @@
 
 = render 'shared/flash_message'
 
-%section.metadata#departments
+%section.metadata#categories
   .new_content
+    = form_for Category.new do |f|
+      %fieldset
+        %h1
+          = f.label :category_name, "Add New Category"
+        %p
+          = f.text_field :category_name, placeholder: "Category Name"
+      %fieldset.actions
+        = f.submit "Add"
 
   .sortable(data-results_per_page="25")
     %table
