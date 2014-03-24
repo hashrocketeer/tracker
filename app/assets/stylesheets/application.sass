@@ -317,15 +317,17 @@ table
   &.alert
     background: #b12828
     p:before
-      background: transparent image-url("icon_flash.png") 0 0 no-repeat
+      background: transparent asset_path("icon_flash.png") 0 0 no-repeat
   &.success
     background: #52bf43
     p:before
-      background: transparent image-url("icon_flash.png") 0 -30px no-repeat
+      background: transparent asset_path("icon_flash.png") 0 -30px no-repeat
 
 .modal
   display: none
   position: absolute
+  top: 40%
+  left: 20%
   z-index: 100
   width: 520px
   padding: 0 20px 20px 20px
@@ -403,7 +405,7 @@ body
         height: 43px
         text-indent: -8685px
         overflow: hidden
-        background: transparent image-url("logo.png") 0 0 no-repeat
+        background: transparent 0 0 no-repeat
     nav
       position: absolute
       left: 200px

@@ -21,7 +21,7 @@
           %th Categories
           %th.unsorted
       %tbody
-        - categories.each do |category|
-          %tr(data-id="#{category.id}")
-            %td
-              %strong= category.category_name
+        = render partial: 'categories/category_list', collection: categories, as: :category
+
+#modal_form.modal
+  = render 'categories/edit_modal'

@@ -24,3 +24,20 @@ Feature: User manages categories
      | Business     |
      | Engineering  |
      | New category |
+
+  @javascript
+  Scenario: Edit an existing category
+    When I click edit for a category
+    And I complete the edit category form
+    Then I should see the following table:
+     | Categories       |
+     | Business         |
+     | Edit Engineering |
+
+  @javascript
+  Scenario: Category can't be blank
+    When I click edit for a category
+    And I blank out the edit category form
+    Then I should see "Category name can't be blank"
+    When I blank out the new category form
+    Then I should see "Category name can't be blank"

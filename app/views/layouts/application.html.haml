@@ -10,8 +10,6 @@
     = javascript_include_tag "application"
     = yield :head
     = csrf_meta_tags
-    - if Rails.env.test?
-      = javascript_include_tag "test_overrides"
   %body
     %header
       .column
@@ -41,3 +39,5 @@
 
     #content.column
       = yield
+
+    #modal_layer

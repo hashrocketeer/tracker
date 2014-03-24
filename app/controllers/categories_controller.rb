@@ -4,10 +4,15 @@ class CategoriesController < ApplicationController
   expose(:category, attributes: :category_params)
 
   def create
-    category.save
-    flash[:success] = "You successfully added #{category.category_name}"
+    category.save ?
+      flash[:success] = ["You successfully", success_action, category.category_name].join(" ") :
+      flash[:alert] = "Category name can't be blank"
+
     redirect_to categories_path
   end
+  alias update create
+
+  private
 
   def category_params
     params.require(:category).permit!

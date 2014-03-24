@@ -1,0 +1,12 @@
+%header
+  %h1 Edit Category
+  = link_to "Close", "#", class: "close"
+= form_for category, method: :put, html: { id: "edit_category"} do |f|
+  %fieldset
+    %dl.half
+      %dt= f.label :category_name
+      %dd= f.text_field :category_name
+
+  %fieldset.actions
+    = f.submit 'Save Category'
+    = link_to "Cancel", "#", class: "close"

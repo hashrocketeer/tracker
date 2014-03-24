@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
   end
+
+  def success_action
+    action_name == "create" ? "added" : "updated"
+  end
+  hide_action(:success_action)
 end
