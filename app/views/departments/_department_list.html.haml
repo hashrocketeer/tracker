@@ -1,0 +1,5 @@
+%tr{ data: { id: department.id, type: "department", metadata: department.department_name } }
+  %td
+    %strong= department.department_name
+  %td
+    = link_to "Edit", "#edit_modal", class: "icon_button edit", data: { toggle: "modal" }

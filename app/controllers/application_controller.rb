@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   end
 
   def success_action
-    action_name == "create" ? "added" : "updated"
+    action_name == "create" ? :added : :updated
   end
+
   hide_action(:success_action)
 end

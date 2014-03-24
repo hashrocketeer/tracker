@@ -1,0 +1,12 @@
+%header
+  %h1 Edit Department
+  = link_to "Close", "#", class: "close"
+= form_for department, method: :put, html: { id: "edit_department"} do |f|
+  %fieldset
+    %dl.half
+      %dt= f.label :department_name
+      %dd= f.text_field :department_name
+
+  %fieldset.actions
+    = f.submit 'Save Department'
+    = link_to "Cancel", "#", class: "close"

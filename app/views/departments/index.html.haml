@@ -21,7 +21,7 @@
           %th Department Name
           %th.unsorted
       %tbody
-        - departments.each do |department|
-          %tr(data-id="#{department.id}")
-            %td
-              %strong= department.department_name
+        = render partial: 'department_list', collection: departments, as: "department"
+
+#modal_form.modal
+  = render 'departments/edit_modal'

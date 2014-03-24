@@ -24,3 +24,12 @@ Feature: User manages departments
      | Business        |
      | Engineering     |
      | New department  |
+
+  @javascript
+  Scenario: Edit an existing department
+    When I click edit for a department
+    And I complete the edit department form
+    Then I should see the following table:
+     | Department Name  |
+     | Business         |
+     | Edit Engineering |

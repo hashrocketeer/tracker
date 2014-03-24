@@ -37,3 +37,7 @@ end
 When /^I click edit for a category$/ do
   edit_table_row_for(@category.id)
 end
+
+When /^I click edit for a department/ do
+  edit_table_row_for(@department.id)
+end
