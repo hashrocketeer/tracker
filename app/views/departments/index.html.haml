@@ -5,6 +5,14 @@
 
 %section.metadata#departments
   .new_content
+    = form_for Department.new do |f|
+      %fieldset
+        %h1
+          = f.label :department_name, "Add New Department"
+        %p
+          = f.text_field :department_name, placeholder: "Department Name"
+      %fieldset.actions
+        = f.submit "Add"
 
   .sortable(data-results_per_page="25")
     %table

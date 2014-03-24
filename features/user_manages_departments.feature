@@ -1,6 +1,6 @@
 Feature: User manages departments
 
-  Scenario: 
+  Background:
     Given there is a valid user
     And the following departments:
      | Department Name | Company Name       |
@@ -10,7 +10,17 @@ Feature: User manages departments
     And I am authenticated
     And I am on the utilities page
     When I follow "Departments"
+
+  Scenario: View a list of departments
     Then I should see the following table:
      | Department Name |
      | Business        |
      | Engineering     |
+
+  Scenario: Add a new department
+    When I complete the new department form
+    Then I should see the following table:
+     | Department Name |
+     | Business        |
+     | Engineering     |
+     | New department  |
