@@ -25,6 +25,7 @@ group :development, :test do
   gem 'ffaker'
   gem 'rspec-rails'
   gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 group :production do
