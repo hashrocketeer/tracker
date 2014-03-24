@@ -5,6 +5,14 @@
 
 %section.metadata#departments
   .new_content
+    = form_for JobTitle.new do |f|
+      %fieldset
+        %h1
+          = f.label :job_title_name, "Add New Job title"
+        %p
+          = f.text_field :job_title_name, placeholder: "Job Title Name"
+      %fieldset.actions
+        = f.submit "Add"
 
   .sortable(data-results_per_page="25")
     %table
