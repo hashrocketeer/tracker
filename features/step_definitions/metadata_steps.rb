@@ -6,7 +6,7 @@ def new_metadata_form(metadata, value)
 end
 
 def edit_metadata_form(metadata, value)
-  within("#edit_#{metadata}") do
+  within("#edit_#{metadata.parameterize("_")}") do
     fill_in "#{metadata.capitalize} name", with: value
     click_button "Save #{metadata.capitalize}"
   end
@@ -40,4 +40,8 @@ end
 
 When /^I click edit for a department/ do
   edit_table_row_for(@department.id)
+end
+
+When /^I click edit for a job title/ do
+  edit_table_row_for(@job_title.id)
 end

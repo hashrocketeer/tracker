@@ -24,3 +24,20 @@ Feature: User manages job titles
      | Bureaucrat    |
      | Captain       |
      | New job title |
+
+  @javascript
+  Scenario: Edit an existing job title
+    When I click edit for a job title
+    And I complete the edit job title form
+    Then I should see the following table:
+     | Job Titles       |
+     | Bureaucrat       |
+     | Edit Engineering |
+
+  @javascript
+  Scenario: Job title can't be blank
+    When I click edit for a job title
+    And I blank out the edit job title form
+    Then I should see "Job Title name can't be blank"
+    When I blank out the new job title form
+    Then I should see "Job Title name can't be blank"

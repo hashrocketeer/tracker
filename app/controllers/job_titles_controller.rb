@@ -10,6 +10,7 @@ class JobTitlesController < ApplicationController
 
     redirect_to job_titles_path
   end
+  alias update create
 
   private
 

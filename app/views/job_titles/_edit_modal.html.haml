@@ -1,0 +1,12 @@
+%header
+  %h1 Edit Job Title
+  = link_to "Close", "#", class: "close"
+= form_for job_title, method: :put, html: { id: "edit_job_title"} do |f|
+  %fieldset
+    %dl.half
+      %dt= f.label :job_title_name
+      %dd= f.text_field :job_title_name
+
+  %fieldset.actions
+    = f.submit 'Save Job title'
+    = link_to "Cancel", "#", class: "close"

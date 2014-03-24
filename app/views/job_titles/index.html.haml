@@ -21,7 +21,7 @@
           %th Job Titles
           %th.unsorted
       %tbody
-        - job_titles.each do |job_title|
-          %tr(data-id="#{job_title.id}")
-            %td
-              %strong= job_title.job_title_name
+        = render partial: 'job_title_list', collection: job_titles, as: "job_title"
+
+#modal_form.modal
+  = render 'job_titles/edit_modal'

@@ -1,0 +1,5 @@
+%tr{ data: { id: job_title.id, type: "job_title", metadata: job_title.job_title_name } }
+  %td
+    %strong= job_title.job_title_name
+  %td
+    = link_to "Edit", "#edit_modal", class: "icon_button edit", data: { toggle: "modal" }
