@@ -12,9 +12,9 @@ def edit_metadata_form(metadata, value)
   end
 end
 
-def edit_table_row_for(id)
+def table_row_action_for(id, action)
   within("tr[data-id='#{id}']") do
-    click_link "Edit"
+    click_link action
   end
 end
 
@@ -34,14 +34,14 @@ When /^I blank out the edit (.*) form$/ do |metadata|
   edit_metadata_form(metadata, "")
 end
 
-When /^I click edit for a category$/ do
-  edit_table_row_for(@category.id)
+When /^I click "(.*)" for a category$/ do |action|
+  table_row_action_for(@category.id, action)
 end
 
-When /^I click edit for a department/ do
-  edit_table_row_for(@department.id)
+When /^I click "(.*)" for a department/ do |action|
+  table_row_action_for(@department.id, action)
 end
 
-When /^I click edit for a job title/ do
-  edit_table_row_for(@job_title.id)
+When /^I click "(.*)" for a job title/ do |action|
+  table_row_action_for(@job_title.id, action)
 end

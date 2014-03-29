@@ -27,7 +27,7 @@ Feature: User manages job titles
 
   @javascript
   Scenario: Edit an existing job title
-    When I click edit for a job title
+    When I click "Edit" for a job title
     And I complete the edit job title form
     Then I should see the following table:
      | Job Titles       |

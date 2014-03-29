@@ -27,7 +27,7 @@ Feature: User manages departments
 
   @javascript
   Scenario: Edit an existing department
-    When I click edit for a department
+    When I click "Edit" for a department
     And I complete the edit department form
     Then I should see the following table:
      | Department Name  |

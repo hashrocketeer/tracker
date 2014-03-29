@@ -27,7 +27,7 @@ Feature: User manages categories
 
   @javascript
   Scenario: Edit an existing category
-    When I click edit for a category
+    When I click "Edit" for a category
     And I complete the edit category form
     Then I should see the following table:
      | Categories       |
