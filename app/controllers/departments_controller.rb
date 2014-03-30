@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
   expose(:company) { current_user.company }
-  expose(:departments) { Department.where(company_id: company.id) }
+  expose(:departments) { Department.active.where(company_id: company.id) }
   expose(:department, attributes: :department_params)
 
   def create
@@ -10,6 +10,12 @@ class DepartmentsController < ApplicationController
     redirect_to departments_path
   end
   alias update create
+
+  def destroy
+    department.deactivate
+    flash[:success] = "You successfully deleted #{department.department_name}"
+    redirect_to departments_path
+  end
 
   private
 

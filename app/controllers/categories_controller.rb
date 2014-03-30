@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   expose(:company) { current_user.company }
-  expose(:categories) { Category.active_categories.where(company_id: company.id) }
+  expose(:categories) { Category.active.where(company_id: company.id) }
   expose(:category, attributes: :category_params)
 
   def create

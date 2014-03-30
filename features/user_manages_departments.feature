@@ -33,3 +33,20 @@ Feature: User manages departments
      | Department Name  |
      | Business         |
      | Edit Engineering |
+
+  @javascript
+  Scenario: Delete an existing department
+    When I click "Delete" for a department
+    And I confirm the delete
+    Then I should see the following table:
+     | Department Name  |
+     | Business         |
+
+  @javascript
+  Scenario: Cancel deleting an existing department
+    When I click "Delete" for a department
+    And I cancel the delete
+    Then I should see the following table:
+     | Department Name  |
+     | Business         |
+     | Engineering      |
