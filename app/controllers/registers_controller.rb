@@ -1,4 +1,3 @@
-
 class RegistersController < ApplicationController
   respond_to :html
 

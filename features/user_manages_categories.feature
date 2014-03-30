@@ -35,8 +35,25 @@ Feature: User manages categories
      | Edit Engineering |
 
   @javascript
+  Scenario: Delete an existing category
+    When I click "Delete" for a category
+    And I confirm the delete
+    Then I should see the following table:
+     | Categories       |
+     | Business         |
+
+  @javascript
+  Scenario: Cancel deleting an existing category
+    When I click "Delete" for a category
+    And I cancel the delete
+    Then I should see the following table:
+     | Categories       |
+     | Business         |
+     | Engineering      |
+
+  @javascript
   Scenario: Category can't be blank
-    When I click edit for a category
+    When I click "Edit" for a category
     And I blank out the edit category form
     Then I should see "Category name can't be blank"
     When I blank out the new category form

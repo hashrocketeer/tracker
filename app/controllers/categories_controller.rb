@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   expose(:company) { current_user.company }
-  expose(:categories) { Category.where(company_id: company.id) }
+  expose(:categories) { Category.active_categories.where(company_id: company.id) }
   expose(:category, attributes: :category_params)
 
   def create
@@ -11,6 +11,12 @@ class CategoriesController < ApplicationController
     redirect_to categories_path
   end
   alias update create
+
+  def destroy
+    category.deactivate
+    flash[:success] = "You successfully deleted #{category.category_name}"
+    redirect_to categories_path
+  end
 
   private
 

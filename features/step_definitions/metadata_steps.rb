@@ -18,6 +18,12 @@ def table_row_action_for(id, action)
   end
 end
 
+def delete_modal_action(action)
+  within('#confirm_delete') do
+    click_link(action)
+  end
+end
+
 When /^I complete the new (.*) form$/ do |metadata|
   new_metadata_form(metadata.capitalize, "New #{metadata}")
 end
@@ -44,4 +50,12 @@ end
 
 When /^I click "(.*)" for a job title/ do |action|
   table_row_action_for(@job_title.id, action)
+end
+
+When "I confirm the delete" do
+  delete_modal_action("Yes")
+end
+
+When "I cancel the delete" do
+  delete_modal_action("No")
 end
