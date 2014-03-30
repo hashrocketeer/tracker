@@ -36,7 +36,7 @@ Feature: User manages job titles
 
   @javascript
   Scenario: Job title can't be blank
-    When I click edit for a job title
+    When I click "Edit" for a job title
     And I blank out the edit job title form
     Then I should see "Job Title name can't be blank"
     When I blank out the new job title form
