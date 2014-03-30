@@ -9,9 +9,9 @@ Tracker::Application.routes.draw do
   resources :trainees, only: :index
 
   scope 'utilities' do
-    resources :departments, only: [ :index, :create, :update ]
-    resources :job_titles, only: [ :index, :create, :update ]
-    resources :categories
+    resources :departments, except: [ :show, :edit, :new ]
+    resources :job_titles, except: [ :show, :edit, :new ]
+    resources :categories, except: [ :show, :edit, :new ]
   end
 
   namespace :api do
