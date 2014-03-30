@@ -35,6 +35,23 @@ Feature: User manages job titles
      | Edit Engineering |
 
   @javascript
+  Scenario: Delete an existing job title
+    When I click "Delete" for a job title
+    And I confirm the delete
+    Then I should see the following table:
+     | Job Titles       |
+     | Bureaucrat       |
+
+  @javascript
+  Scenario: Cancel deleting an existing job title
+    When I click "Delete" for a job title
+    And I cancel the delete
+    Then I should see the following table:
+     | Job Titles       |
+     | Bureaucrat       |
+     | Captain          |
+
+  @javascript
   Scenario: Job title can't be blank
     When I click "Edit" for a job title
     And I blank out the edit job title form

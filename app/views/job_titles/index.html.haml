@@ -23,5 +23,7 @@
       %tbody
         = render partial: 'job_title_list', collection: job_titles, as: "job_title"
 
+= render 'shared/delete_modal'
+
 #modal_form.modal
   = render 'job_titles/edit_modal'

@@ -1,6 +1,6 @@
 class JobTitlesController < ApplicationController
   expose(:company) { current_user.company }
-  expose(:job_titles) { JobTitle.where(company_id: company.id) }
+  expose(:job_titles) { JobTitle.active.where(company_id: company.id) }
   expose(:job_title, attributes: :job_title_params)
 
   def create
@@ -11,6 +11,12 @@ class JobTitlesController < ApplicationController
     redirect_to job_titles_path
   end
   alias update create
+
+  def destroy
+    job_title.deactivate
+    flash[:success] = "You successfully deleted #{job_title.job_title_name}"
+    redirect_to job_titles_path
+  end
 
   private
 
