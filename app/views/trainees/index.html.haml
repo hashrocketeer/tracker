@@ -1,1 +1,55 @@
-%h1 Trainees
+%section#content_list
+  #sidebar
+    = form_for trainee, html: { id: "trainee_search", class: "search", data: { bind: "submit: searchTrainees" } } do |f|
+      %fieldset.filters
+        %header
+          %h1 Search
+          = link_to "Clear All", "#", class: "reset"
+        %ul
+          %li
+            .nested_fields
+              %dl
+                %dt= f.label :first_name
+                %dd= f.text_field :first_name, placeholder: "John"
+              %dl
+                %dt= f.label :last_name
+                %dd= f.text_field :last_name, placeholder: "Smith"
+              %dl
+                %dt= f.label :phone
+                %dd= f.text_field :phone, placeholder: "(###) ###-####"
+              %dl
+                %dt= f.label :badge_id, "Badge ID"
+                %dd= f.text_field :badge_id
+              %dl
+                %dt= f.label :employee_number, "Employee #"
+                %dd= f.text_field :employee_number
+              %dl
+                %dt= f.label :department_id, "Department"
+                %dd= f.select :department_id, []
+              %dl
+                %dt= f.label :job_title_id, "Job Title"
+                %dd= f.select :job_title_id, []
+              %dl
+                %dt= f.label :category_id, "Category"
+                %dd= f.select :category_id, []
+
+        = f.submit "Search"
+
+
+#main
+  .sortable(data-results_per_page="25")
+    %table
+      %thead
+        %tr
+          - ["Last Name", "First Name", "Phone", "Badge Id", "Employee #", "Department", "Category", "Job Title"].each do |th|
+            %th= th
+      %tbody{ data: { bind: "foreach: trainees" } }
+        %tr
+          %td{ data: { bind: "text: last_name" } }
+          %td{ data: { bind: "text: first_name" } }
+          %td{ data: { bind: "text: phone" } }
+          %td{ data: { bind: "text: badge_id" } }
+          %td{ data: { bind: "text: employee_number" } }
+          %td{ data: { bind: "text: department_name" } }
+          %td{ data: { bind: "text: category_name" } }
+          %td{ data: { bind: "text: job_title_name" } }

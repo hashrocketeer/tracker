@@ -13,5 +13,9 @@ class ApplicationController < ActionController::Base
     action_name == "create" ? :added : :updated
   end
 
+  def current_company
+    current_user ? current_user.company : nil
+  end
+
   hide_action(:success_action)
 end

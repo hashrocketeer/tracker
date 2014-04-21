@@ -1,5 +1,6 @@
 Fabricator(:category) do
   transient :company_name
-  company_id  { |attrs| Company.find_or_create_by(company_name: attrs[:company_name]).id }
+  company_id  { |attrs| company_id_for(attrs[:company_name])}
+
   deleted { false }
 end

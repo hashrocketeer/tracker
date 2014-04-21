@@ -23,14 +23,7 @@
       %tbody
         = render partial: 'categories/category_list', collection: categories, as: :category
 
-#delete_modal.modal
-  #confirm_delete
-    %header
-      %h1.title
-      = link_to "Close", "#", class: "close"
-    .actions
-      = link_to "Yes", "#", class: "button confirm"
-      = link_to "No", "#", class: "button close"
+= render 'shared/delete_modal'
 
 #modal_form.modal
   = render 'categories/edit_modal'
