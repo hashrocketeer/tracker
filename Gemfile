@@ -13,6 +13,7 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
+gem 'active_model_serializers'
 
 gem 'puma'
 
