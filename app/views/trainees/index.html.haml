@@ -25,13 +25,13 @@
                 %dd= f.text_field :employee_number
               %dl
                 %dt= f.label :department_id, "Department"
-                %dd= f.select :department_id, []
+                %dd= f.select :department_id, options_for_select(departments), include_blank: "Select department"
               %dl
                 %dt= f.label :job_title_id, "Job Title"
-                %dd= f.select :job_title_id, []
+                %dd= f.select :job_title_id, options_for_select(job_titles), include_blank: "Select job title"
               %dl
                 %dt= f.label :category_id, "Category"
-                %dd= f.select :category_id, []
+                %dd= f.select :category_id, options_for_select(categories), include_blank: "Select category"
 
         = f.submit "Search"
 
