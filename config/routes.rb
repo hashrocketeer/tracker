@@ -6,7 +6,7 @@ Tracker::Application.routes.draw do
 
   resource :register, only: [ :new, :create ]
   resources :users
-  resources :trainees, only: :index
+  resources :trainees
 
   scope 'utilities' do
     resources :departments, except: [ :show, :edit, :new ]

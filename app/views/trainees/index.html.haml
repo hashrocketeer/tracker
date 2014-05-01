@@ -1,5 +1,12 @@
+= content_for :page_head do
+  %h1 Search Trainees
+
+= render 'shared/flash_message'
+
 %section#content_list
   #sidebar
+    = link_to "Create New Trainee", [:new, :trainee], class: "button add"
+
     = form_for trainee, html: { id: "trainee_search", class: "search", data: { bind: "submit: searchTrainees" } } do |f|
       %fieldset.filters
         %header
