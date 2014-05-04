@@ -21,6 +21,25 @@ When "I submit the trainee details" do
   within("#new_trainee") do
     fill_in "First name", with: "Johnny"
     fill_in "Last name", with: "Bluejeans"
+    fill_in "Badge ID", with: "1234"
+    fill_in "Employee #", with: "5678"
+
+    fill_in "Phone", with: "555-1212"
+    fill_in "Home phone", with: "555-1313"
+    fill_in "Fax", with: "555-1414"
+
+    select "My Department", from: "Department"
+    select "My Category", from: "Category"
+    select "My Job Title", from: "Job Title"
+
+    fill_in "Address", with: "123 Sesame Street, New York, NY 10023"
+
+    fill_in "Birth date", with: "/21/2012"
+    fill_in "Hire date", with: "12/21/2012"
+    fill_in "Termination date", with: "12/21/2012"
+
+    fill_in "Blood type", with: "O+"
+    fill_in "Medical alerts/allergies", with: "None"
 
     click_button "Save Trainee"
   end

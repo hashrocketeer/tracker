@@ -4,6 +4,7 @@ Feature: User adds trainee
   Scenario:
     Given there is a valid user
     And I am authenticated
+    And the company has metadata
     And I am on the people page
     When I follow "Create New Trainee"
     And I submit the trainee details

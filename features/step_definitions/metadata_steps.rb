@@ -24,6 +24,12 @@ def delete_modal_action(action)
   end
 end
 
+Given "the company has metadata" do
+  [:department, :category, :job_title].each do |metadata|
+    Fabricate(metadata, company: @user.company)
+  end
+end
+
 When /^I complete the new (.*) form$/ do |metadata|
   new_metadata_form(metadata.capitalize, "New #{metadata}")
 end

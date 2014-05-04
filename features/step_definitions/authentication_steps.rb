@@ -24,7 +24,7 @@ Given "I am authenticated" do
 end
 
 Given "there is a valid user" do
-  Fabricate(:user) {
+  @user = Fabricate(:user) {
     first_name "Amy"
     last_name "Wong"
     email "awong@example.com"
