@@ -36,8 +36,8 @@ class Api::V1::TraineesController < ApplicationController
 
   def trainee_params
     clean_params
-    params.require(:trainee).permit(:first_name, :last_name, :badge_id, :employee_number,
-                                    :phone, :department_id, :category_id, :job_title_id)
+    params.require(:trainee).permit(:first_name, :last_name, :badge_id, :employee_number, :home_phone, :fax, :phone,                                    :department_id, :category_id, :job_title_id, :hire_date, :birth_date,
+                                    :termination_date, :blood_type, :medical_notes, :address, :internal_address)
   end
 
 end
