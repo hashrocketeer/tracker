@@ -49,6 +49,10 @@ When "I submit the trainee details" do
   end
 end
 
+When "I delete that trainee's details" do
+  click_link "Remove"
+end
+
 When "I edit that trainee's details" do
   click_link "Edit"
 
@@ -62,7 +66,7 @@ When "I edit that trainee's details" do
   end
 end
 
-Then /^I see a confirmation that the trainee was (added|saved)$/ do |action|
+Then /^I see a confirmation that the trainee was (added|saved|deleted)$/ do |action|
   within(".flash") do
     page.should have_content("You successfully #{action} a trainee")
   end
@@ -75,4 +79,12 @@ end
 Then "I see that trainee in search results" do
   step 'I search for trainees by "First name" with "Johnny"'
   search_results_for "Johnny", "Bluejeans"
+end
+
+Then(/^I see that trainee removed from search results$/) do
+  step %Q{I search for trainees by "First name" with "#{@trainee.first_name}"}
+  within('#main > div > table') do
+    page.all("tr").count.should == 1
+    expect(page).to_not have_content @trainee.first_name
+  end
 end

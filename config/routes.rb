@@ -16,7 +16,7 @@ Tracker::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :trainees, only: [ :create, :update ]
+      resources :trainees, only: [ :create, :update, :destroy ]
       post 'trainees/search' => 'trainees#search'
     end
   end

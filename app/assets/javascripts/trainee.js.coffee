@@ -111,6 +111,22 @@ TraineeViewModel = ->
 
     return
 
+  @destroyTrainee = (trainee) ->
+    $.ajax
+      type: "DELETE"
+      url: "/api/v1/trainees/" + trainee.id() + ".json"
+      dataType: "json"
+      success: ->
+        self.errors []
+        self.setFlash "You successfully deleted a trainee"
+        self.trainees.remove(trainee)
+        return
+
+      error: (msg) ->
+        viewModel.errors JSON.parse(msg.responseText)
+        return
+    return
+
   @searchTrainees = (e) ->
     $.ajax
       type: "POST"

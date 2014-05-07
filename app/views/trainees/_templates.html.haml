@@ -10,6 +10,7 @@
     %td{ data: { bind: "text: job_title_name" } }
     %td.right
       = link_to "Edit", "#", class: "icon_button edit", data: { bind: "click: function() { $parent.editTrainee($data) }" }
+      = link_to "Remove", "#", class: "icon_button remove", data: { bind: "click: function() { $parent.destroyTrainee($data) }" }
 
 %script#newTemplate(type='text/html')
   = form_for :trainee, html: { id: "new_trainee", data: { bind: "submit: $parent.createTrainee" } } do |f|

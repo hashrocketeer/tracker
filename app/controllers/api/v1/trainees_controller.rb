@@ -19,6 +19,11 @@ class Api::V1::TraineesController < ApplicationController
     render json: trainee, root: false
   end
 
+  def destroy
+    updateable_trainee.deactivate
+    render json: "ok".to_json, root: false
+  end
+
   private
 
   def updateable_trainee
