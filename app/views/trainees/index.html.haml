@@ -1,11 +1,21 @@
+= render 'templates'
+
+%section{ data: { bind: 'visible: page() == "new"' } }
+  %div{ data: { bind: 'template: { name: "newTemplate", data: empty }' } }
+
+%section{ data: { bind: 'visible: page() == "edit"' } }
+  %div{ data: { bind: 'template: { name: "editTemplate", data: selected  }' } }
+
 = content_for :page_head do
-  %h1 Search Trainees
+  %h1{ data: { bind: 'text: heading' } }
 
-= render 'shared/flash_message'
+= content_for :flash do
+  .flash{ data: { bind: 'css: flashClass' } }
+    %p{ data: { bind: 'text: flash' } }
 
-%section#content_list
+%section#content_list{ data: { bind: 'visible: page() == "index"' } }
   #sidebar
-    = link_to "Create New Trainee", [:new, :trainee], class: "button add"
+    = link_to "Create New Trainee", "#", class: "button add", data: { bind: 'click: function() { newTrainee() }' }
 
     = form_for trainee, html: { id: "trainee_search", class: "search", data: { bind: "submit: searchTrainees" } } do |f|
       %fieldset.filters
@@ -43,20 +53,11 @@
         = f.submit "Search"
 
 
-#main
+#main{ data: { bind: 'visible: page() == "index"' } }
   .sortable(data-results_per_page="25")
     %table
       %thead
         %tr
-          - ["Last Name", "First Name", "Phone", "Badge Id", "Employee #", "Department", "Category", "Job Title"].each do |th|
+          - ["Last Name", "First Name", "Phone", "Badge Id", "Employee #", "Department", "Category", "Job Title", ""].each do |th|
             %th= th
-      %tbody{ data: { bind: "foreach: trainees" } }
-        %tr
-          %td{ data: { bind: "text: last_name" } }
-          %td{ data: { bind: "text: first_name" } }
-          %td{ data: { bind: "text: phone" } }
-          %td{ data: { bind: "text: badge_id" } }
-          %td{ data: { bind: "text: employee_number" } }
-          %td{ data: { bind: "text: department_name" } }
-          %td{ data: { bind: "text: category_name" } }
-          %td{ data: { bind: "text: job_title_name" } }
+      %tbody{ data: { bind: 'template: { name: "indexTemplate", foreach: trainees }' } }

@@ -6,7 +6,7 @@ Tracker::Application.routes.draw do
 
   resource :register, only: [ :new, :create ]
   resources :users
-  resources :trainees
+  resources :trainees, only: :index
 
   scope 'utilities' do
     resources :departments, except: [ :show, :edit, :new ]
@@ -16,6 +16,7 @@ Tracker::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :trainees, only: [ :create, :update ]
       post 'trainees/search' => 'trainees#search'
     end
   end

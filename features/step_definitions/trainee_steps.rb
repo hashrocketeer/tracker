@@ -13,6 +13,10 @@ When /^I search for trainees by "(.*)" with "(.*)"$/ do |field, value|
   end
 end
 
+When "I search for that trainee" do
+  step %Q{I search for trainees by "First name" with "#{@trainee.first_name}"}
+end
+
 Then "only that trainee is displayed" do
   search_results_for "Fry", "Philip"
 end
@@ -45,10 +49,27 @@ When "I submit the trainee details" do
   end
 end
 
-Then "I see a confirmation that the trainee was added" do
-  within(".flash") do
-    page.should have_content("You successfully added Johnny Bluejeans")
+When "I edit that trainee's details" do
+  click_link "Edit"
+
+  within("#edit_trainee") do
+    fill_in "First name", with: "Johnny"
+    fill_in "Last name", with: "Bluejeans"
+    fill_in "Badge ID", with: "1234"
+    fill_in "Employee #", with: "5678"
+
+    click_button "Save Trainee"
   end
+end
+
+Then /^I see a confirmation that the trainee was (added|saved)$/ do |action|
+  within(".flash") do
+    page.should have_content("You successfully #{action} a trainee")
+  end
+end
+
+Given "the company has a trainee" do
+  @trainee = Fabricate(:trainee, company: @user.company)
 end
 
 Then "I see that trainee in search results" do
